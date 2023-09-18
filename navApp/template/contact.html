@@ -1,0 +1,25 @@
+{% extends 'master_template.html' %}
+
+{% block title %}
+<title>Contact | Django </title>
+{% endblock %}
+
+{% block body %}
+<h1 style="text-align: center;">Registration Form</h1>
+{% if name %}
+<h1>Hello, {{name}}!</h1>
+{% else %}
+<form method="post" action="">
+    {% csrf_token %}
+    <div>
+        <label for="firstname">firstname:</label>
+        <input type="text" name="firstname" id="">
+    </div>
+    <div>
+        <label for="lastname">lastname:</label>
+        <input type="text" name="lastname" id="">
+    </div>
+    <button type="submit" class="btn">submit</button>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %}
+    <title>CRUD | Project</title>
+    {% endblock%}
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">
+            <h2>MyLogo</h2>
+        </div>
+        <div class="navbar">
+            <ul class="nav" id="navBar">
+                <li class="{% if request.path == '/' %} acticve {% endif %}"><a href="/">Home</a></li>
+                <li class="{% if request.path == '/about/' %} acticve {% endif %}"><a href="/about/">About</a></li>
+                <li class="{% if request.path == '/services/' %} acticve {% endif %}"><a href="/services/">Services</a>
+                </li>
+                <li class="{% if request.path == '/contact/' %} acticve {% endif %}"><a href="/contact/">Add Record</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    {% block body %}
+    <h1 style="text-align: center;margin-top: 50px;">User Records </h1>
+    <table>
+        <thead>
+            <tr>
+                <!-- <th>id</th> -->
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>fullName</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>{{item.firstname}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.firstname}} {{item.lastname}}</td>
+                <td>
+                    <button class="btn" style="background-color: brown;
+                    border: none;
+                    color: #fff;cursor: pointer;">
+                        <a href="delete/{{item.id}}">Delete</a> </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}
+</body>
+
+</html>
